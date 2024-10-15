@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>AI Transformation: Global Trends in Adoption and Workforce Evolution</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/purecss@2.0.6/build/pure-min.css"
+    />
+
+    <style>
+      * {
+        letter-spacing: normal;
+        word-spacing: normal;
+        line-height: normal;
+        white-space: normal;
+        text-transform: none;
+        font-kerning: auto;
+      }
+
+      body {
+        background-color: #ccc;
+        font-family: "Times New Roman", serif;
+        color: #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .fixed-container {
+        width: 1350px;
+        background-color: #e0f7fa;
+        padding: 20px;
+        margin: 20px auto;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+        font-size: 40px;
+        font-weight: bold;
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 30px;
+      }
+
+      h2 {
+        font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+        font-size: 25px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #2c3e50;
+        padding-left: 3%;
+      }
+
+      p {
+        font-size: 18px;
+        font-family: "Times New Roman", serif;
+        line-height: 1.6;
+        padding-left: 3%;
+      }
+
+      .section-radar {
+        display: grid;
+        grid-template-columns: 40% 60%;
+        grid-template-rows: auto;
+        margin-bottom: 30px;
+      }
+
+      .section-radar .col-left {
+        padding-right: 20px;
+      }
+
+      .section-radar .col-right {
+        height: 600px;
+      }
+
+      .section-treemap {
+        display: flex;
+      }
+
+      .section-treemap .col-left {
+        overflow: hidden;
+      }
+
+      .section-treemap .col-right {
+        height: 450px;
+        overflow: hidden;
+        width: 10%;
+      }
+
+      .section-global-ai {
+        margin-bottom: 10px;
+      }
+
+      .pure-g {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .pure-u-1-2 {
+        width: 48%;
+      }
+
+      .pure-u-1 {
+        width: 100%;
+      }
+
+      .pure-u-1-2 img {
+        margin-left: 10px;
+      }
+
+      .pure-u-1-2 p {
+        padding-right: 10px;
+      }
+
+      .heatmap-section {
+        margin-top: 10px;
+      }
+
+      .pure-g {
+        margin-top: 0px;
+      }
+
+      .section {
+        margin: 20px 0;
+        padding: 20px;
+      }
+
+      .visualization {
+        padding: 20px;
+        background-color: #e0f7fa;
+        border-radius: 8px;
+        border: none;
+      }
+
+      iframe {
+        overflow: hidden;
+        border: none;
+        width: 150%;
+        height: 100%;
+      }
+
+      html {
+        background-color: #ccc;
+      }
+
+      .footer-text {
+        font-style: italic;
+        color: grey;
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+
+      .col-left {
+        width: 38%;
+      }
+
+      .col-right {
+        width: 48%;
+      }
+
+      .bordered-section {
+        border-top: 2px solid #ccc;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="fixed-container">
+      <h1>Cross-Country AI Capability Insights</h1>
+
+      <div class="pure-g">
+        <div class="col-left">
+          <h2>Comparison of AI Capabilities Across Countries</h2>
+          <p>
+            This radar chart offers a comparative analysis of key AI capabilities across countries, 
+            highlighting seven critical dimensions: Talent, Infrastructure, Operating Environment, 
+            Research, Development, Government Strategy, and Commercial. It provides a side-by-side comparison, 
+            allowing users to explore how countries like China and the United States perform in each of these areas.
+            For instance, the United States might lead in research and infrastructure, while China could demonstrate 
+            stronger government support and talent development. These comparisons help identify areas where countries 
+            excel and where improvement may be needed. The chart serves as a powerful tool for analyzing national strengths 
+            in AI and can guide policymakers, businesses, and researchers in understanding the competitive landscape of AI 
+            on a global scale. It allows users to make informed decisions about investments, partnerships, and policy initiatives by 
+            visualizing both strengths and weaknesses across nations.
+          </p>
+        </div>
+        <div class="col-right visualization">
+          <iframe
+            src="Radar_chart.html"
+            style="width: 120%; height: 600px"
+          ></iframe>
+        </div>
+      </div>
+
+      <div class="section-global-ai">
+        <div class="pure-g">
+          <div class="pure-u-1-2 col-left">
+            <h2>Global Landscape of AI Performance</h2>
+            <p>
+              This map presents the global distribution of AI performance scores across
+              various countries. The darker regions, such as the United States and China,
+              indicate higher total AI index scores, reflecting these nations' leadership
+              in artificial intelligence innovation and adoption. Countries are color-coded
+              based on their overall AI index score, highlighting disparities in AI
+              development worldwide. The “ClusterSelect” dropdown allows filtering based
+              on specific regions or clusters for a more focused comparison.
+            </p>
+          </div>
+          <div class="pure-u-1-2 col-right">
+            <img
+              src="globalAI.png"
+              alt="AI Image"
+              style="width: 100%; margin-top: 10px;"
+            />
+          </div>
+        </div>
+
+        <div class="pure-g">
+          <div class="pure-u-1 visualization">
+            <iframe
+              src="Map.html"
+              style="width: 100%; height: 560px; border: none;"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+
+      <div class="pure-g heatmap-section">
+        <div class="col-left">
+          <h2>AI Adoption and Salary Trends Across Industries</h2>
+          <p>
+            This heatmap reveals the relationship between AI adoption
+            levels—categorized as Low, Medium, or High—and average salaries
+            across different industries. Darker shades represent higher
+            salaries, with industries like Finance and Technology showcasing
+            higher wage potentials, particularly at higher levels of AI
+            adoption. The visualization highlights how AI integration impacts
+            compensation trends, emphasizing the economic benefits of adopting
+            AI in certain sectors.
+          </p>
+        </div>
+        <div class="col-right visualization" style="transform: scale(0.83); transform-origin: top left;">
+          <iframe
+            src="Heatmap.html"
+            style="width: 150%; height: 450px"
+          ></iframe>
+        </div>
+      </div>
+
+      <div class="pure-g">
+        <div class="col-left">
+          <h2>Impact of Automation Risk on Job Distribution</h2>
+          <p>
+            The treemap provides an overview of the distribution of job
+            opportunities across industries, segmented by their risk of
+            automation. Each rectangle’s size reflects the number of job
+            opportunities within an industry for a specific automation risk
+            level. For example, industries like Retail, Education, and
+            Manufacturing appear prominently for the “High” automation risk
+            category. This visualization emphasizes the sectors most
+            vulnerable to automation, allowing a better understanding of the
+            future labor market dynamics based on AI and automation trends.
+          </p>
+        </div>
+        <div class="col-right visualization" style="transform: scale(0.9); transform-origin: top left;">
+          <iframe
+            src="Treemap.html"
+            style="width: 180; height: 400px"
+          ></iframe>
+        </div>
+      </div>
+
+      <div class="section bordered-section">
+        <p class="footer-text">
+          This visualization is created by <strong>Qiuyang Qian</strong> on <strong>October 15, 2024</strong>.
+        </p>
+        <p class="footer-text">
+          Visualization Data Source:
+          <ul>
+            <li><a href="https://www.kaggle.com/datasets/uom190346a/ai-powered-job-market-insights">AI-Powered Job Market Insights</a></li>
+            <li><a href="https://www.kaggle.com/datasets/katerynameleshenko/ai-index">AI Index Database</a></li>
+          </ul>
+        </p>
+        <p class="footer-text">
+          Image Source: <a href="https://meatechwatch.com/2024/08/30/global-ai-summit-2024-in-riyadh-to-showcase-pioneering-developments-in-artificial-intelligence/">Global AI Summit 2024</a>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

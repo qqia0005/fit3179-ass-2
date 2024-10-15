@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.30.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.20.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.26.0"></script>
+</head>
+<body>
+  <div id="vis"/>
+  <script>
+    const spec = {
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "autosize": {"type": "pad", "contains": "padding"},
+  "title": {
+    "text": "Job Distribution by Automation Risk",
+    "anchor": "middle",
+    "fontSize": 16,
+    "font": "Helvetica Neue, Arial",
+    "dy": -10
+  },
+  "width": 700,
+  "height": 300,
+  "padding": 5,
+  "signals": [
+    {
+      "name": "selectedRisk",
+      "value": "High",
+      "bind": {
+        "input": "select",
+        "options": ["High", "Medium", "Low"],
+        "name": "Automation Risk: "
+      }
+    }
+  ],
+  "data": [
+    {
+      "name": "jobs",
+      "url": "https://raw.githubusercontent.com/qqia0005/fit3179-ass-2/refs/heads/main/ai_job_market_insights.csv",
+      "format": {"type": "csv", "delimiter": ","},
+      "transform": [
+        {"type": "filter", "expr": "datum.Automation_Risk == selectedRisk"},
+        {
+          "type": "aggregate",
+          "groupby": ["Industry"],
+          "ops": ["count"],
+          "as": ["job_count"]
+        },
+        {"type": "nest", "keys": ["Industry"]},
+        {
+          "type": "treemap",
+          "field": "job_count",
+          "sort": {"field": "value"},
+          "round": true,
+          "size": [{"signal": "width"}, {"signal": "height"}],
+          "method": "squarify",
+          "paddingInner": 1
+        }
+      ]
+    },
+    {
+      "name": "totalJobs",
+      "source": "jobs",
+      "transform": [
+        {
+          "type": "aggregate",
+          "ops": ["sum"],
+          "fields": ["job_count"],
+          "as": ["total"]
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "color",
+      "type": "ordinal",
+      "domain": {"data": "jobs", "field": "Industry"},
+      "range": ["#1f77b4", "#ff7f0e", "#2ca02c"]
+    }
+  ],
+  "marks": [
+    {
+      "type": "rect",
+      "from": {"data": "jobs"},
+      "encode": {
+        "enter": {"fill": {"scale": "color", "field": "Industry"}},
+        "update": {
+          "x": {"field": "x0"},
+          "y": {"field": "y0"},
+          "x2": {"field": "x1"},
+          "y2": {"field": "y1"},
+          "tooltip": {
+            "signal": "{'Industry': datum.Industry, 'Job Count': datum.job_count, 'Percentage': round((datum.job_count / data('totalJobs')[0].total) * 100) + '%'}"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {"data": "jobs"},
+      "encode": {
+        "enter": {
+          "font": {"value": "Helvetica Neue, Arial"},
+          "align": {"value": "center"},
+          "baseline": {"value": "middle"},
+          "fill": {
+            "signal": "if((datum.x1 - datum.x0) * (datum.y1 - datum.y0) < 5000, 'black', 'white')"
+          },
+          "text": {"field": "Industry"},
+          "fontSize": {
+            "signal": "clamp(0.4 * sqrt(datum.x1 - datum.x0), 14, 24)"
+          }
+        },
+        "update": {
+          "x": {"signal": "0.5 * (datum.x0 + datum.x1)"},
+          "y": {"signal": "0.5 * (datum.y0 + datum.y1)"}
+        }
+      }
+    }
+  ],
+  "config": {}
+};
+const embedOptions = {
+      mode: "vega",
+      actions: false  
+    };
+    vegaEmbed("#vis", spec, embedOptions, {mode: "vega"}).then(console.log).catch(console.warn);
+  </script>
+</body>
+</html>

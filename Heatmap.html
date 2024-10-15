@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.30.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.20.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.26.0"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    const spec = {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "title": {
+        "text": "AI Adoption vs. Salary by Industry",
+        "fontSize": 16,
+        "font": "Helvetica Neue, Arial",
+        "anchor": "middle",
+        "dy": -10
+      },
+      "data": {
+        "url": "https://raw.githubusercontent.com/qqia0005/fit3179-ass-2/refs/heads/main/ai_job_market_insights.csv"
+      },
+      "width": 600,
+      "height": 250,
+      "background": "#e0f7fa",
+      "mark": "rect",
+      "encoding": {
+        "x": {
+          "field": "Industry", 
+          "type": "nominal", 
+          "axis": {
+            "labelAngle": -45,
+            "labelFontSize": 16
+          }
+        },
+        "y": {
+          "field": "AI_Adoption_Level",
+          "type": "nominal",
+          "sort": ["High", "Medium", "Low"],
+          "axis": {
+            "labelFontSize": 16
+          }
+        },
+        "color": {
+          "aggregate": "mean",
+          "field": "Salary_USD",
+          "type": "quantitative",
+          "scale": {"scheme": "redpurple"},
+          "legend": {
+            "title": "Average Salary (USD)",
+            "labelFontSize": 12 
+          }
+        },
+        "tooltip": [
+          {"field": "Industry", "type": "nominal", "title": "Industry"},
+          {"field": "AI_Adoption_Level", "type": "nominal", "title": "AI Adoption Level"},
+          {"aggregate": "mean", "field": "Salary_USD", "type": "quantitative", "title": "Average Salary (USD)", "format": ",d"}
+        ]
+      },
+      "config": {"view": {"stroke": "transparent"}}
+    };
+    
+    const embedOptions = {
+      mode: "vega",
+      actions: false  
+    };
+    
+    vegaEmbed("#vis", spec, embedOptions, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+  </script>
+</body>
+</html>
